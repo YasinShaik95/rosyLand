@@ -120,3 +120,4 @@
 /Users/yasinshaik/rosyLand/api/obj/Debug/net8.0/api.pdb
 /Users/yasinshaik/rosyLand/api/obj/Debug/net8.0/api.genruntimeconfig.cache
 /Users/yasinshaik/rosyLand/api/obj/Debug/net8.0/ref/api.dll
+/Users/yasinshaik/rosyLand/api/obj/Debug/net8.0/api.sourcelink.json
