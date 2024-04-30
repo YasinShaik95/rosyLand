@@ -10,6 +10,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -18,16 +20,19 @@ import { HttpClientModule } from '@angular/common/http';
     NavbarComponent,
     SidebarComponent,
     FooterComponent,
-    HomepageComponent
+    HomepageComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     RouterModule.forRoot([
-      {path:'shopAll',component:ShopAllComponent},
-      {path:'home',component:HomepageComponent}
-    ])
+      { path:'shopAll',component:ShopAllComponent },
+      { path: 'home', component: HomepageComponent },
+      { path: 'login', component: LoginComponent }
+    ]),
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
