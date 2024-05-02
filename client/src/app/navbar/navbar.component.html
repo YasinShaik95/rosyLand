@@ -67,7 +67,7 @@
             </svg>
           </a>
           <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser3">
-            <li><a class="dropdown-item" href="#" *ngIf="loggedIn && isAdmin">Manages Roles</a></li>
+            <li><a class="dropdown-item" routerLink="/manageUsers" *ngIf="loggedIn && isAdmin">Manages Users</a></li>
             <li><a class="dropdown-item" href="#" *ngIf="loggedIn && isAdmin">Add Product</a></li>
             <li *ngIf="loggedIn && isAdmin">
               <hr class="dropdown-divider">

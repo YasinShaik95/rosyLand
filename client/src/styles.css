@@ -7,7 +7,7 @@
   margin-top: 100px;
 }
 
-.login-style{
+.display-child-comp{
   display: flex;
   flex-direction: column;
   align-self: center;

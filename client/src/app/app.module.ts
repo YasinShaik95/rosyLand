@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { AdminMangeuserComponent } from './admin-mangeuser/admin-mangeuser.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { RegisterComponent } from './register/register.component';
     FooterComponent,
     HomepageComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    AdminMangeuserComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +35,8 @@ import { RegisterComponent } from './register/register.component';
       { path:'shopAll',component:ShopAllComponent },
       { path: 'home', component: HomepageComponent },
       { path: 'login', component: LoginComponent },
-      { path:'register',component: LoginComponent }
+      { path: 'register', component: LoginComponent },
+      { path: 'manageUsers', component:AdminMangeuserComponent }
     ]),
     FormsModule
   ],
