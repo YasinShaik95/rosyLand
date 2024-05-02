@@ -45,6 +45,7 @@ public class AccountController : AppControllerBase
           {
             UserName = appUser.UserName,
             Email = appUser.Email,
+            Roles = await _accountRepository.GetUserRoles(register.Username),
             Token = await _tokenService.CreateToken(appUser)
           };
         }
@@ -87,6 +88,7 @@ public class AccountController : AppControllerBase
           {
             UserName = loginDTO.Username,
             Email = userDetails.Email,
+            Roles = await _accountRepository.GetUserRoles(loginDTO.Username),
             Token = await _tokenService.CreateToken(new AppUser
             {
               UserName = userDetails.UserName,

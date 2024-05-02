@@ -47,4 +47,16 @@ public class AccountRepository : IAccountRepository
       throw;
     }
   }
+
+  public async Task<IList<string>> GetUserRoles(string username)
+  {
+    try
+    {
+      return await _userManager.GetRolesAsync(await _userManager.FindByNameAsync(username));
+    }
+    catch (Exception)
+    {
+      throw;
+    }
+  }
 }
