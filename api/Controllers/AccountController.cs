@@ -45,7 +45,7 @@ public class AccountController : AppControllerBase
           {
             UserName = appUser.UserName,
             Email = appUser.Email,
-            Token = _tokenService.CreateToken(appUser)
+            Token = await _tokenService.CreateToken(appUser)
           };
         }
         else
@@ -87,7 +87,7 @@ public class AccountController : AppControllerBase
           {
             UserName = loginDTO.Username,
             Email = userDetails.Email,
-            Token = _tokenService.CreateToken(new AppUser
+            Token = await _tokenService.CreateToken(new AppUser
             {
               UserName = userDetails.UserName,
               Email = userDetails.Email
