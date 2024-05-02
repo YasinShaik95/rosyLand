@@ -72,8 +72,9 @@
             <li *ngIf="loggedIn">
               <hr class="dropdown-divider">
             </li>
-            <li><a class="dropdown-item" routerLink="/login" *ngIf="!loggedIn">Register/Login</a></li>
-            <li><a class="dropdown-item" href="#" *ngIf="loggedIn">Logout</a></li>
+            <li><a class="dropdown-item" routerLink="/register" *ngIf="!loggedIn">Register</a></li>
+            <li><a class="dropdown-item" routerLink="/login" *ngIf="!loggedIn">Login</a></li>
+            <li><a class="dropdown-item" routerLink="/home" *ngIf="loggedIn" (click)="logout()">Logout</a></li>
           </ul>
         </div>
         <button class="btn btn-outline-success btn-basic" type="submit" data-bs-toggle="tooltip" title="Shopping Cart">

@@ -12,6 +12,7 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { LoginComponent } from './login/login.component';
     SidebarComponent,
     FooterComponent,
     HomepageComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +32,8 @@ import { LoginComponent } from './login/login.component';
     RouterModule.forRoot([
       { path:'shopAll',component:ShopAllComponent },
       { path: 'home', component: HomepageComponent },
-      { path: 'login', component: LoginComponent }
+      { path: 'login', component: LoginComponent },
+      { path:'register',component: LoginComponent }
     ]),
     FormsModule
   ],

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AccountService } from '../services/account.service';
 
 @Component({
   selector: 'app-navbar',
@@ -8,13 +9,25 @@ import { Component, OnInit } from '@angular/core';
 export class NavbarComponent implements OnInit {
   searchString: string | undefined;
   loggedIn: boolean = false;
-  constructor(){}
+
+  constructor(private accountService:AccountService){}
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    this.getCurrentUser();
+  }
+
+  getCurrentUser() {
+    this.accountService.currentUser$.subscribe({
+      next: user => this.loggedIn = !!user,
+      error: error => console.log(error)
+    });
   }
 
   search() {
     
+  }
+
+  logout() {
+    this.accountService.logout();
   }
 
 }
