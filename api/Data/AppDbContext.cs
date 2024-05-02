@@ -31,6 +31,27 @@ public class AppDbContext : IdentityDbContext<AppUser>
           }
         };
 
+    var appUser = new AppUser
+    {
+      UserName = "admin",
+      Email = "rosyland@gmail.com",
+      EmailConfirmed = true,
+      FirstName = "admin",
+      LastName = "admin",
+      NormalizedUserName = "ADMIN"
+    };
+
+    PasswordHasher<AppUser> ph = new PasswordHasher<AppUser>();
+    appUser.PasswordHash = ph.HashPassword(appUser, "iamadmin@123");
+
+    builder.Entity<AppUser>().HasData(appUser);
+
     builder.Entity<IdentityRole>().HasData(roles);
+
+    builder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string>
+    {
+      RoleId = roles.First(role => role.Name == "admin").Id,
+      UserId = appUser.Id
+    });
   }
 }
