@@ -29,6 +29,10 @@ export class LoginComponent implements OnInit{
       error: error => console.log(error)
     });
   }
+
+  register() {
+    
+  }
   
   loginViaGoogle() {
     

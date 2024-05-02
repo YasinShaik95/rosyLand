@@ -1,5 +1,6 @@
 ﻿
 using System.Net;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,6 +18,7 @@ public class AccountController : AppControllerBase
     _signingInManager = signInManager;
   }
 
+  [AllowAnonymous]
   [HttpPost("register")]
   public async Task<ActionResult<UserDTO>> RegisterUser(RegisterDTO register)
   {
@@ -62,6 +64,7 @@ public class AccountController : AppControllerBase
     }
   }
 
+  [AllowAnonymous]
   [HttpPost("login")]
   public async Task<ActionResult<UserDTO>> Login(LoginDTO loginDTO)
   {
