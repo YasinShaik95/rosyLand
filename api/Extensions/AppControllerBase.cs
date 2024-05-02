@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 
 namespace api;
-[Authorize]
+[Authorize(AuthenticationSchemes = "Bearer")]
 [ApiController]
 [Route("api/[controller]")]
 //[Authorize]

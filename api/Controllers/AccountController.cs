@@ -1,5 +1,4 @@
 ﻿
-using System.Net;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -106,6 +105,54 @@ public class AccountController : AppControllerBase
       {
         return Unauthorized("Invalid Username or Password");
       }
+    }
+    catch (Exception ex)
+    {
+      return StatusCode(500, ex.Message);
+    }
+  }
+
+  [Authorize(Roles = "admin")]
+  [HttpGet("getallusers")]
+  public async Task<ActionResult> GetAllUsers()
+  {
+    try
+    {
+      List<UserDTO> userresult = new List<UserDTO>();
+
+      var users = await _accountRepository.GetAllUsers();
+
+      users.ForEach(async user =>
+      {
+        userresult.Add(new UserDTO
+        {
+          UserName = user.UserName,
+          Email = user.Email,
+          FirstName = user.FirstName,
+          LastName = user.LastName,
+          Country = user.Country,
+          Roles = await _accountRepository.GetUserRoles(user.UserName)
+        });
+      });
+
+      return Ok(userresult);
+    }
+    catch (Exception ex)
+    {
+      return StatusCode(500, ex.Message);
+    }
+  }
+
+  [Authorize(Roles = "admin")]
+  [HttpPost("updateuserrole")]
+  public async Task<ActionResult<UserDTO>> UpdateUserRole(UserRoleDTO userRole)
+  {
+    try
+    {
+      if (userRole is null) return BadRequest(userRole);
+
+      return Ok(await _accountRepository.UpdateUserRole(userRole.UserName, userRole.RoleName));
+
     }
     catch (Exception ex)
     {

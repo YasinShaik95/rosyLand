@@ -28,12 +28,18 @@ public class AccountRepository : IAccountRepository
   {
     try
     {
-      return await _userManager.AddToRoleAsync(appUser, "user");
+      var user = await _userManager.FindByNameAsync(appUser.UserName);
+      return await _userManager.AddToRoleAsync(user, "user");
     }
     catch (Exception)
     {
       throw;
     }
+  }
+
+  public async Task<List<AppUser>> GetAllUsers()
+  {
+    return await _userManager.Users.ToListAsync();
   }
 
   public async Task<AppUser> GetUserDetails(string userName)
@@ -53,6 +59,21 @@ public class AccountRepository : IAccountRepository
     try
     {
       return await _userManager.GetRolesAsync(await _userManager.FindByNameAsync(username));
+    }
+    catch (Exception)
+    {
+      throw;
+    }
+  }
+
+  public async Task<AppUser> UpdateUserRole(string username, string rolename)
+  {
+    try
+    {
+      var user = await _userManager.FindByNameAsync(username);
+      var role = await _userManager.AddToRoleAsync(user, rolename);
+
+      return user;
     }
     catch (Exception)
     {

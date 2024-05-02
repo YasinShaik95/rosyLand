@@ -8,4 +8,6 @@ public interface IAccountRepository
   Task<IdentityResult> CreateUserRole(AppUser appUser);
   Task<AppUser> GetUserDetails(string userName);
   Task<IList<string>> GetUserRoles(string username);
+  Task<List<AppUser>> GetAllUsers();
+  Task<AppUser> UpdateUserRole(string username, string rolename);
 }
