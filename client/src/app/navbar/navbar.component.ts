@@ -9,6 +9,7 @@ import { AccountService } from '../services/account.service';
 export class NavbarComponent implements OnInit {
   searchString: string | undefined;
   loggedIn: boolean = false;
+  isAdmin: boolean = false;
 
   constructor(private accountService:AccountService){}
   ngOnInit(): void {
@@ -17,7 +18,16 @@ export class NavbarComponent implements OnInit {
 
   getCurrentUser() {
     this.accountService.currentUser$.subscribe({
-      next: user => this.loggedIn = !!user,
+      next: user => {
+        if (user) {
+          this.loggedIn = true;
+          this.isAdmin = user.roles.includes('admin'); 
+        }
+        else {
+          this.loggedIn = false;
+          this.isAdmin = false;
+        }
+      },
       error: error => console.log(error)
     });
   }
